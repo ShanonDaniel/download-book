@@ -1,0 +1,9 @@
+requests
+yaspin
+clint
+tk
+openpyxl
+reportlab
+pypdf
+pdf2image
+pillow
