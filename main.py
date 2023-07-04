@@ -216,7 +216,9 @@ if __name__ == "__main__":
             img = img.resize((int(COVERPAGE_WIDTH), int(COVERPAGE_HEIGHT)))
             
             img.save(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}_coverpage.tiff')
-                        
+            
+            # remove the pdf coverpage...
+            os.remove(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}_coverpage.pdf')
             sp.write(f"✅ Finished making coverpage images of {ebookDetails[3].value}!")
         
         # Convert epub
