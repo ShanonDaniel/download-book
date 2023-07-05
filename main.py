@@ -202,7 +202,7 @@ if __name__ == "__main__":
                 if i + 1 < firstpage_number:
                     continue
                 writer.add_page(page)
-            writer.write(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}_manuscript.pdf')
+            writer.write(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}.pdf')
             writer_for_coverpage.write(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}_coverpage.pdf')
             os.remove(f'download/{ebookDetails[1].value}/tmp_{ebookDetails[1].value}.pdf')
             sp.write(f"✅ Page size conversion complete!")
@@ -210,21 +210,21 @@ if __name__ == "__main__":
         # Make a coverpage png and tiff file
         with yaspin(text=f'Making coverpage images of {ebookDetails[1].value}...', color="cyan") as sp:
             images = convert_from_path(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}_coverpage.pdf', dpi = 72, use_cropbox=True, transparent= True, use_pdftocairo=True)
-            images[0].save(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}_coverpage.png')
+            images[0].save(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}.png')
             
-            img = Image.open(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}_coverpage.png')
+            img = Image.open(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}.png')
             img = img.resize((int(COVERPAGE_WIDTH), int(COVERPAGE_HEIGHT)))
             
-            img.save(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}_coverpage.tiff')
+            img.save(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}.tiff')
             
             # remove the pdf coverpage...
             os.remove(f'download/{ebookDetails[1].value}/{ebookDetails[1].value}_coverpage.pdf')
             sp.write(f"✅ Finished making coverpage images of {ebookDetails[3].value}!")
         
         # Convert epub
-        with yaspin(text=f'Converting {ebookDetails[1].value}_manuscript.pdf to {ebookDetails[1].value}_manuscript.epub...', color="cyan") as sp:
-            os.system(f'ebook-convert "download/{ebookDetails[1].value}/{ebookDetails[1].value}_manuscript.pdf" "download/{ebookDetails[1].value}/{ebookDetails[1].value}_manuscript.epub" --no-default-epub-cover')
-            sp.write(f"✅ Converted {ebookDetails[1].value}_manuscript.pdf to {ebookDetails[1].value}_manuscript.epub!")
+        with yaspin(text=f'Converting {ebookDetails[1].value}.pdf to {ebookDetails[1].value}.epub...', color="cyan") as sp:
+            os.system(f'ebook-convert "download/{ebookDetails[1].value}/{ebookDetails[1].value}.pdf" "download/{ebookDetails[1].value}/{ebookDetails[1].value}.epub" --no-default-epub-cover')
+            sp.write(f"✅ Converted {ebookDetails[1].value}.pdf to {ebookDetails[1].value}.epub!")
         
         # Save xls file
         try:
