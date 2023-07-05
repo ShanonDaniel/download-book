@@ -223,7 +223,7 @@ if __name__ == "__main__":
         
         # Convert epub
         with yaspin(text=f'Converting {ebookDetails[1].value}_manuscript.pdf to {ebookDetails[1].value}_manuscript.epub...', color="cyan") as sp:
-            os.system(f'ebook-convert "download/{ebookDetails[1].value}/{ebookDetails[1].value}_manuscript.pdf" "download/{ebookDetails[1].value}/{ebookDetails[1].value}_manuscript.epub"')
+            os.system(f'ebook-convert "download/{ebookDetails[1].value}/{ebookDetails[1].value}_manuscript.pdf" "download/{ebookDetails[1].value}/{ebookDetails[1].value}_manuscript.epub" --no-default-epub-cover')
             sp.write(f"✅ Converted {ebookDetails[1].value}_manuscript.pdf to {ebookDetails[1].value}_manuscript.epub!")
         
         # Save xls file
